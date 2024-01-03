@@ -33,21 +33,18 @@ document.addEventListener('click', (event) => {
     }
 });
 
-
-
-
-
 //tabs
 const tabBtns = document.querySelectorAll('.tab__btn');
 const contents = document.querySelectorAll('.contents');
 
 function changeClass(el) {
-    for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove('active');
-        tabBtns[i].querySelector('.tab__img_1')?.classList.remove('active');
-        tabBtns[i].querySelector('.tab__img_2')?.classList.remove('active');
-        tabBtns[i].querySelector('.tab__img_3')?.classList.remove('active');
-    }
+    tabBtns.forEach(tabBtn => {
+        tabBtn.classList.remove('active');
+        tabBtn.querySelector('.tab__img_1')?.classList.remove('active');
+        tabBtn.querySelector('.tab__img_2')?.classList.remove('active');
+        tabBtn.querySelector('.tab__img_3')?.classList.remove('active');
+    });
+
     el.classList.add('active');
     el.querySelector('.tab__img_1')?.classList.add('active');
     el.querySelector('.tab__img_2')?.classList.add('active');
@@ -66,14 +63,6 @@ tabBtns.forEach((tabBtn) => {
         });
     });
 });
-
-
-
-
-
-
-
-
 
 // modal-"подробнее"
 document.addEventListener('DOMContentLoaded', function() {
@@ -124,9 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-
-
-
 //slider
 const slides = document.querySelectorAll('.slide');
 const next = document.getElementById('btn-next');
@@ -135,18 +121,16 @@ const dots = document.querySelectorAll('.dot');
 
 let index = 0;
 
-function activeSlide(n){
-    for (let slide of slides){
-        slide.classList.remove('active')
-    }
-    slides[n].classList.add('active')
+function activeSlide(n) {
+    slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === n);
+    });
 }
 
-function activeDot(n){
-    for (let dot of dots){
-        dot.classList.remove('active')
-    }
-    dots[n].classList.add('active')
+function activeDot(n) {
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === n);
+    });
 }
 
 function nextSlide(){
@@ -200,10 +184,6 @@ dots.forEach(function(item, indexDot) {
 
 next.addEventListener('click', nextSlide);
 prev.addEventListener('click', prevSlide);
-
-
-
-
 
 //form
 const form = document.querySelector('.order-section form');
