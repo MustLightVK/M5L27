@@ -440,6 +440,10 @@ form{
     margin-bottom: 20px;
     padding: 19px 0 19px 30px;
 
+    font-size: 20px;
+    font-weight: 300;
+
+    color: #323232;
     outline: none;
     background: none;
     border: 1px solid #323232;
