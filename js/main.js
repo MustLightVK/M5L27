@@ -190,14 +190,31 @@ const form = document.querySelector('.order-section form');
 const modalWrapper = document.querySelector('.wrapper-modal-input');
 const closeModalButton = document.querySelector('.input-item-close');
 const modal = document.getElementById('modal-window-input');
+const checkboxes = form.querySelectorAll('input[name="preferences"]');
+const submitBtn = document.getElementById('order-btn');
+
+function isPreferencesSelected() {
+    return form.querySelector('input[name="preferences"]:checked') !== null;
+}
 
 form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    modalWrapper.classList.add('active');
+    if (!isPreferencesSelected()) {
+        alert('Пожалуйста, выберите хотя бы один вариант предпочтений');
+        event.preventDefault();
+    } else {
+        modalWrapper.classList.add('active');
+        event.preventDefault();
+    }
 });
 
 closeModalButton.addEventListener('click', function() {
     closeModal();
+
+    checkboxes.forEach(function(checkbox) {   
+        checkbox.checked = false;
+    });
+
+    form.reportValidity(); // Запуск встроенной валидации формы после снятия галочек
 });
 
 document.addEventListener('click', function(event) {
@@ -210,4 +227,8 @@ function closeModal() {
     modalWrapper.classList.remove('active');
 }
 
-
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+        submitBtn.disabled = !isPreferencesSelected();
+    });
+});

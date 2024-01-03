@@ -208,10 +208,10 @@
                     <img src="img/pop0.jpg" alt="">
                 </div>
                 <div>
-                    <form action="#" method="post">
-                        <input class="input-data" type="text" name="name" placeholder="Имя" required>
-                        <input class="input-data" type="tel" name="phone" placeholder="Телефон" required>
-                        <input class="input-data" type="email" name="email" placeholder="Почта" required>
+                    <form id="orderForm" action="#" method="post">
+                        <input class="input-data" type="text" name="name" placeholder="Имя" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="Пожалуйста, введите корректное имя">
+                        <input class="input-data" type="tel" name="phone" placeholder="Телефон" required pattern="\+?[0-9]{10,}" title="Пожалуйста, введите корректный номер телефона без пробелов">
+                        <input class="input-data" type="email" name="email" placeholder="Почта" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Пожалуйста, введите корректный адрес электронной почты">
                         
                         <div class="checkbox-wrapper">
                             <input class="input-checkbox" type="checkbox" id="lavender" name="preferences" value="lavender">
